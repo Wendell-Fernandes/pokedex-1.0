@@ -4,4 +4,5 @@ import { defineConfig } from 'vite'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/pokedex-1.0/',
 })
