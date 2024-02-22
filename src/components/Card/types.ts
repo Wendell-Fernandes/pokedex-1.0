@@ -1,14 +1,5 @@
-export interface ICard {
-  data: {
-    name: string
-    url: string
-  }
-}
+import { IPokemons } from '../../types'
 
-export interface IPokemon {
-  name: string
-  sprites: {
-    front_default: string
-  }
-  id: number
+export interface ICard {
+  pokemon: IPokemons
 }
