@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from 'react'
 
-import { IPokemons } from '../../types'
+import { IPokemon } from '../../types'
 
 export interface IPokemonsProvider {
-  pokemons: IPokemons[]
-  setPokemons: Dispatch<SetStateAction<IPokemons[]>>
+	pokemons: IPokemon[]
+	setPokemons: Dispatch<SetStateAction<IPokemon[]>>
 }
