@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import images from '../../assets/'
 import Watermark from '../../components/Watermark'
 import { usePokemons } from '../../contexts/Pokemons'
-import hooks from '../../hooks'
-import captalizeFirstLetter from '../../hooks/captalizeFirstLetter'
+import functions from '../../helpers'
 import Default from '../../layouts/Default'
 import api from '../../services/api'
 import { IPokemon } from '../../types'
@@ -28,6 +26,7 @@ const Pokemon: React.FC = () => {
 		if (pokemons.length) {
 			getPokemon()
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [pokemons])
 
 	return (
@@ -35,14 +34,14 @@ const Pokemon: React.FC = () => {
 			<div className="relative flex h-screen w-[70%] items-end justify-center overflow-hidden pb-[2%]">
 				<div className="absolute top-0 z-10 grid w-full grid-cols-3 items-center justify-center text-2xl">
 					<p className="justify-self-end text-6xl">
-						{hooks.captalizeFirstLetter(pokemon?.name || 'Pokemon...')}
+						{functions.captalizeFirstLetter(pokemon?.name || 'Pokemon...')}
 					</p>
 					<img
 						src={pokemon ? pokemon.sprites.other['official-artwork'].front_default : ''}
 						alt=""
 						className="size-80 justify-self-center"
 					/>
-					<p className="text-5xl">{`Nº ${pokemon ? hooks.addZeroLeft(pokemon.id) : '000'}`}</p>
+					<p className="text-5xl">{`Nº ${pokemon ? functions.addZeroLeft(pokemon.id) : '000'}`}</p>
 				</div>
 
 				<div className="relative grid h-[70%] w-full grid-cols-2 grid-rows-3 gap-x-20 gap-y-8 border-4 border-white px-9 pb-6 pt-10">
@@ -50,11 +49,11 @@ const Pokemon: React.FC = () => {
 					<div className="cyan z-10 row-span-2 grid grid-cols-2 items-center justify-center rounded-2xl bg-white/80 p-5 text-black">
 						<div className="">
 							<p>Weight</p>
-							<span>{`${hooks.decimetersToMeters(pokemon?.weight)} kg`}</span>
+							<span>{`${functions.decimetersToMeters(pokemon?.weight)} kg`}</span>
 						</div>
 						<div>
 							<p>Height</p>
-							<span>{`${hooks.decimetersToMeters(pokemon?.height)} m`}</span>
+							<span>{`${functions.decimetersToMeters(pokemon?.height)} m`}</span>
 						</div>
 						<div className="">
 							<p>Base exp</p>
@@ -62,7 +61,7 @@ const Pokemon: React.FC = () => {
 						</div>
 						<div className="">
 							<p>Habitat</p>
-							<span>{hooks.captalizeFirstLetter(pokemon?.habitat.name)}</span>
+							<span>{functions.captalizeFirstLetter(pokemon?.habitat.name)}</span>
 						</div>
 						<div className="">
 							<p>Order</p>
@@ -72,12 +71,12 @@ const Pokemon: React.FC = () => {
 							<p>Gender</p>
 							<div className="flex">
 								<img
-									src={images.male}
+									src="images/male.png"
 									alt=""
 									className="size-[30px]"
 								/>
 								<img
-									src={images.female}
+									src="images/female.png"
 									alt=""
 									className="size-8"
 								/>
@@ -86,7 +85,7 @@ const Pokemon: React.FC = () => {
 					</div>
 
 					<div className="white z-10 flex items-center justify-center overflow-hidden border-b-4 border-white text-[26px]">
-						<p>{pokemon ? hooks.formatting(pokemon.flavor_text_entries[0].flavor_text) : ''}</p>
+						<p>{pokemon ? functions.formatting(pokemon.flavor_text_entries[0].flavor_text) : ''}</p>
 					</div>
 
 					<div className="z-10 row-span-2 flex flex-col items-center justify-center gap-4 rounded-2xl bg-white/80 text-xl">
@@ -96,11 +95,7 @@ const Pokemon: React.FC = () => {
 								className="flex items-center justify-center gap-3 text-black"
 							>
 								<img
-									src={Object.values(images).find(
-										(l) =>
-											l ===
-											`/pokedex-1.0/@fs/C:/Users/Wendell/Documents/Projects/pokedex-1.0/src/assets/images/${e.stat.name}.png`,
-									)}
+									src={`images/${e.stat.name}.png`}
 									alt=""
 									className="size-7"
 								/>
@@ -108,7 +103,7 @@ const Pokemon: React.FC = () => {
 									<p>{`${
 										e.stat.name === 'hp' ?
 											e.stat.name.toUpperCase()
-										:	hooks.captalizeFirstLetter(e.stat.name)
+										:	functions.captalizeFirstLetter(e.stat.name)
 									}: ${e.base_stat}`}</p>
 									<div className={`h-3 w-[250px] overflow-hidden bg-gray-300`}>
 										<div
@@ -128,10 +123,10 @@ const Pokemon: React.FC = () => {
 								{pokemon?.types.map((e) => (
 									<span
 										key={e.type.name}
-										style={{ background: hooks.switchColor(e.type.name) }}
+										style={{ background: functions.switchColor(e.type.name) }}
 										className="h-min w-28 rounded-lg px-4 py-1 text-center text-white"
 									>
-										{captalizeFirstLetter(e.type.name)}
+										{functions.captalizeFirstLetter(e.type.name)}
 									</span>
 								))}
 							</div>
@@ -145,7 +140,7 @@ const Pokemon: React.FC = () => {
 										key={e.ability.name}
 										className="h-max w-max rounded-lg bg-gray-300 px-4 py-1"
 									>
-										{hooks.captalizeFirstLetter(e.ability.name)}
+										{functions.captalizeFirstLetter(e.ability.name)}
 									</span>
 								))}
 							</div>

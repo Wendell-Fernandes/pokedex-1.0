@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import hooks from '../../hooks'
+import hooks from '../../helpers'
 import { IPokemon } from '../../types'
 
 const Card: React.FC<{ pokemon: IPokemon }> = ({ pokemon }) => {
