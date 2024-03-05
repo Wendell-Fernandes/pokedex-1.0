@@ -15,18 +15,18 @@ const Home: React.FC = () => {
 				<div className="flex items-center justify-between">
 					<input
 						type="text"
-						placeholder="Search"
+						placeholder="Search..."
 						value={search}
 						onChange={(e) => {
 							setSearch(e.target.value)
 						}}
-						className="h-12 w-72 border-4 border-white bg-gray-400/20 pl-4 no-underline decoration-transparent shadow-none outline-none placeholder:text-white backdrop:blur-sm"
+						className="h-12 w-72 border-4 border-white bg-white/10 pl-4 font-medium no-underline decoration-transparent shadow-none outline-none placeholder:text-white placeholder:text-white/90 backdrop:blur-xl"
 					/>
 					<input
 						type="text"
 						placeholder={`Pokemons found: ${search.length ? filter.length : pokemons.length}`}
 						disabled
-						className="h-12 w-72 border-4 border-white bg-gray-400/20 text-center no-underline decoration-transparent shadow-none outline-none placeholder:text-white backdrop:blur-sm"
+						className="h-12 w-72 border-4 border-white bg-white/15 text-center font-medium no-underline decoration-transparent shadow-none outline-none placeholder:text-white backdrop:blur-xl"
 					/>
 				</div>
 				<div className="relative flex h-[75%] w-full items-center justify-center border-4 border-white">
