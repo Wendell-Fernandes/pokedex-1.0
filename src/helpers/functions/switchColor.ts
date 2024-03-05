@@ -2,41 +2,41 @@ const switchColor = (type: string) => {
 	type.toLowerCase().trim()
 	switch (type) {
 		case 'normal':
-			return '#a4acaf'
+			return '#a9a979'
 		case 'fire':
-			return '#fd7d24'
+			return '#f0812c'
 		case 'water':
-			return '#4592c4'
+			return '#6891f0'
 		case 'grass':
-			return '#9bcc50'
+			return '#79c94f'
 		case 'electric':
-			return '#eed535'
+			return '#f8d12c'
 		case 'ice':
-			return '#51c4e7'
+			return '#99d9d9'
 		case 'fighting':
-			return '#d56723'
+			return '#c12c23'
 		case 'poison':
-			return '#b97fc9'
+			return '#a13ea1'
 		case 'ground':
-			return 'linear-gradient(0deg, rgba(171,152,66,1) 50%, rgba(238,213,53,1) 50%)'
+			return '#e1c168'
 		case 'flying':
-			return 'linear-gradient(0deg, rgba(189,185,184,1) 50%, rgba(61,199,239,1) 50%)'
-		case 'Psychic':
-			return '#f366b9'
+			return '#a991f0'
+		case 'psychic':
+			return '#f85789'
 		case 'bug':
-			return '#729f3f'
+			return '#a9b91a'
 		case 'rock':
-			return '#a38c21'
+			return '#b9a135'
 		case 'ghost':
-			return '#7b62a3'
+			return '#705799'
 		case 'dragon':
-			return 'linear-gradient(0deg, rgba(241,110,87,1) 50%, rgba(83,164,207,1) 50%)'
+			return '#7035f8'
 		case 'dark':
-			return '#705848'
+			return '#705746'
 		case 'steel':
-			return '#9eb7b8'
+			return '#b9b9d1'
 		case 'fairy':
-			return '#fdb9e9'
+			return '#ef9aae'
 		default:
 			break
 	}

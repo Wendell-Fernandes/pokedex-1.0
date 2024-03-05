@@ -4,11 +4,10 @@ import Card from '../../components/Card'
 import Watermark from '../../components/Watermark'
 import { usePokemons } from '../../contexts/Pokemons'
 import Default from '../../layouts/Default'
+import useHome from './logic'
 
 const Home: React.FC = () => {
-	const { pokemons } = usePokemons()
-	const [search, setSearch] = useState<string>('')
-	const filter = search.length ? pokemons.filter((e) => e.name.includes(search.toLowerCase().trim())) : []
+	const { pokemons, search, setSearch, filter } = useHome()
 
 	return (
 		<Default>

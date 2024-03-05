@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 export interface IPokemon {
 	name: string
 	sprites: {
@@ -39,6 +41,9 @@ interface IType {
 
 interface IFlavor {
 	flavor_text: string
+	language: {
+		name: string
+	}
 }
 
 interface IEgg {

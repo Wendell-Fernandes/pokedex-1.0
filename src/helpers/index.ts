@@ -1,15 +1,15 @@
 import addZeroLeft from './functions/addZeroLeft'
 import captalizeFirstLetter from './functions/captalizeFirstLetter'
 import decimetersToMeters from './functions/decimetersToMeters'
-import formatting from './functions/formatting'
+import formattingText from './functions/formattingText'
 import switchColor from './functions/switchColor'
 
-const functions = {
+const helpers = {
 	addZeroLeft,
 	captalizeFirstLetter,
 	decimetersToMeters,
-	formatting,
+	formattingText,
 	switchColor,
 }
 
-export default functions
+export default helpers
