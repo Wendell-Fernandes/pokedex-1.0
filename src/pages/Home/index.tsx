@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 
 import Card from '../../components/Card'
+import Loader from '../../components/Loader'
 import Watermark from '../../components/Watermark'
-import { usePokemons } from '../../contexts/Pokemons'
 import Default from '../../layouts/Default'
 import useHome from './logic'
 
 const Home: React.FC = () => {
-	const { pokemons, search, setSearch, filter } = useHome()
+	const { pokemons, search, setSearch, filter, loading, setLoading } = useHome()
 
 	return (
 		<Default>
+			{loading && <Loader />}
 			<div className="flex h-screen w-[70%] flex-col justify-center gap-12">
 				<div className="flex items-center justify-between">
 					<input

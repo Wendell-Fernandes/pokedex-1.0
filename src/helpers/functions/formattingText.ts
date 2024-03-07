@@ -1,5 +1,4 @@
 const formattingText = (text: string) => {
-	console.log(text)
 	return text
 		.replace(/[^\p{L}\p{N}\p{P}\p{Z}^$\n]/gu, ' ')
 		.toLocaleLowerCase()

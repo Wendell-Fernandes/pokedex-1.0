@@ -3,23 +3,37 @@ import { ReactNode, createContext, useContext, useEffect, useState } from 'react
 
 import api from '../../services/api'
 import { IPokemon } from '../../types'
+import { useLoading } from '../Loading'
 import { IPokemonsProvider } from './types'
 
 const Pokemons = createContext({} as IPokemonsProvider)
 
 const PokemonsProvider = ({ children }: { children: ReactNode }) => {
+	const { loading, setLoading } = useLoading()
 	const endpoints: string[] = []
 	const [pokemons, setPokemons] = useState<IPokemon[]>([])
 
 	const getPokemons = async () => {
-		const response = await axios.all(endpoints.map((endpoint) => axios.get(endpoint)))
-		response.map((e) => setPokemons((current) => [...current, e.data]))
+		try {
+			const response = await axios.all(endpoints.map((endpoint) => axios.get(endpoint)))
+			response.map((e) => setPokemons((current) => [...current, e.data]))
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setLoading(false)
+		}
 	}
 
 	const getEndpoints = async () => {
-		const response = await api.get('/pokemon?limit=151&offset=0')
-		response.data.results.map((e: { url: string }) => endpoints.push(e.url))
-		getPokemons()
+		try {
+			setLoading(true)
+			const response = await api.get('/pokemon?limit=493&offset=0')
+			response.data.results.map((e: { url: string }) => endpoints.push(e.url))
+		} catch (error) {
+			console.log(error)
+		} finally {
+			getPokemons()
+		}
 	}
 
 	useEffect(() => {

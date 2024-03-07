@@ -2,16 +2,19 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Button from '../../components/Button/index.tsx'
+import Loader from '../../components/Loader/index.tsx'
+import Photo from '../../components/Skeleton/Photo/index.tsx'
 import Watermark from '../../components/Watermark'
 import helpers from '../../helpers/index.ts'
 import Default from '../../layouts/Default'
 import usePokemon from './logic.ts'
 
 const Pokemon: React.FC = () => {
-	const { pokemon, id } = usePokemon()
+	const { pokemon, id, loading } = usePokemon()
 
 	return (
 		<Default>
+			{loading && <Loader />}
 			<div className="relative flex h-screen w-[70%] items-end justify-center overflow-visible pb-[2%]">
 				<div className="absolute right-0 top-10 z-20">
 					<Button
@@ -23,11 +26,14 @@ const Pokemon: React.FC = () => {
 					<p className="justify-self-end text-6xl">
 						{helpers.captalizeFirstLetter(pokemon?.name || 'Pokemon...')}
 					</p>
-					<img
-						src={pokemon && pokemon.sprites.other['official-artwork'].front_default}
-						alt=""
-						className="size-80 justify-self-center"
-					/>
+					{loading ?
+						<Photo />
+					:	<img
+							src={pokemon && pokemon.sprites.other['official-artwork'].front_default}
+							alt=""
+							className="size-80 justify-self-center"
+						/>
+					}
 					<p className="text-5xl">{`Nº ${pokemon ? helpers.addZeroLeft(pokemon.id) : '000'}`}</p>
 				</div>
 

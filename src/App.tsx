@@ -1,3 +1,5 @@
+import { SkeletonTheme } from 'react-loading-skeleton'
+
 import Providers from './contexts'
 import Routes from './routes'
 
