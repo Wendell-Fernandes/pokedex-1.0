@@ -46,7 +46,7 @@ const Pokemon: React.FC = () => {
 								className="size-20 rotate-180"
 							/>
 						</Link>
-						<Link to={id == '151' ? '/' : `/pokemon/${id && parseInt(id) + 1}`}>
+						<Link to={id == '493' ? '/' : `/pokemon/${id && parseInt(id) + 1}`}>
 							<img
 								src="images/arrow.png"
 								alt=""
